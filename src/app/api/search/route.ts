@@ -1,47 +1,19 @@
-import fs from "fs";
-import readline from "readline";
-import { type NextRequest, NextResponse } from "next/server";
-
-/**
- * Função para verificar se um CNPJ existe no arquivo.
- * @param filePath Caminho do arquivo .txt
- * @param cnpj CNPJ que você quer buscar
- * @returns true se encontrar, false caso contrário
- */
-
-export async function cnpjExistsInFile(
- filePath: string,
- cnpj: string
-): Promise<boolean> {
- const fileStream = fs.createReadStream(filePath);
-
- const rl = readline.createInterface({
- input: fileStream,
- crlfDelay: Infinity,
- });
-
- for await (const line of rl) {
- const [, currentCnpj] = line.split(";");
- if (currentCnpj === cnpj) {
- return true;
- }
- }
-
- return false;
-};
-
+import { NextResponse } from "next/server";
+import { cnpjExistsInFile } from "./search";
+import path from "path";
 
 interface SearchRentInput {
-    cnpj: string;
-};
-export default async function POST(req: NextRequest): Promise<any> {
-    const body: SearchRentInput = await req.json();
+  cnpj: string;
+}
+export async function POST(req: Request): Promise<any> {
+  const body: SearchRentInput = await req.json();
+  console.log(body);
+  try {
+    const filePath = path.join(process.cwd(), "public", "arquivo-pme.txt");
+    const rent = await cnpjExistsInFile(filePath, body.cnpj);
 
-    try {
-        const rent = await cnpjExistsInFile("/arquivo-pme.txt", body.cnpj);
-
-        return NextResponse.json({ rent: rent })
-    } catch (error) {
-        return NextResponse.json(error)
-    }
+    return NextResponse.json({ rent: rent });
+  } catch (error) {
+    return NextResponse.json(error);
+  }
 }
