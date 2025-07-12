@@ -79,7 +79,7 @@ export function SearchForm() {
   };
 
   return (
-    <Card className="shadow-none w-[26vw] px-4 py-10">
+    <Card className="shadow-none w-[26vw] max-sm:w-full max-lg:w-full px-4 py-10">
       <CardHeader className="flex flex-col mb-8 gap-0 justidy-center items-center">
         <Image src="/claro-logo.svg" alt="claro-logo" width={32} height={32} />
         <CardTitle className="text-xl font-bold mt-3 tracking-tight text-muted-foreground">
