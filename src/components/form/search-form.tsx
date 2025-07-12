@@ -5,8 +5,8 @@ import { zodResolver } from "@hookform/resolvers/zod"
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "../ui/card";
-import { Form } from "../ui/form";
-
+import { Form, FormField, FormItem, FormLabel  } from "../ui/form";
+import { Input } from "../ui/form"
 
 
 const searchForm = z.object({
@@ -46,7 +46,18 @@ export function SearchForm() {
             </CardHeader>
             <CardContent>
                 <Form {...form}>
-                    <form></form>
+                    <form className="space-y-6" onSubmit={form.handleSubmit(onSubmit)}>
+                        <FormField
+                            control={form.control}
+                            name="cnpj"
+                            render={({ field }) => (
+                               <FormItem>
+                                    <FormLabel>Digite um CNPJ</FormLabel>
+                                    <Input className="h-12"/>
+                               </FormItem>
+                            )}
+                        />
+                    </form>
                 </Form>
             </CardContent>
         </Card>
