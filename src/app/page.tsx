@@ -9,7 +9,7 @@ export default function Home() {
         <div className="flex flex-col gap-3 items-center">
           <SearchForm />
           <p className="text-xs font-light text-muted/40">
-            Copyright 2025 - Todos os direitos reservardos
+            Copyright 2025 - Todos os direitos reservados
           </p>
         </div>
       </section>
