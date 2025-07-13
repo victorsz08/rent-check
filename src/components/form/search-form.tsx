@@ -80,13 +80,13 @@ export function SearchForm() {
 
   return (
     <Card className="shadow-none w-[26vw] max-sm:w-full max-lg:w-full px-4 py-10">
-      <CardHeader className="flex flex-col mb-8 gap-0 justidy-center items-center">
+      <CardHeader className="flex text-center flex-col mb-8 gap-0 justidy-center items-center">
         <Image src="/claro-logo.svg" alt="claro-logo" width={32} height={32} />
         <CardTitle className="text-xl font-bold mt-3 tracking-tight text-muted-foreground">
           Buscar Oferta
         </CardTitle>
         <CardDescription className="text-xs tracking-tight text-muted-foreground/80 font-light">
-          Busque a disponibilidade de ofertas excluisivas PME
+          Busque a disponibilidade de ofertas exclusivas PME
         </CardDescription>
       </CardHeader>
       <CardContent>
@@ -142,14 +142,14 @@ export function SearchForm() {
               {rent === true ? (
                 <span className="flex flex-col gap-1 items-center justify-center">
                   <CheckCircle className="w-8 h-8 text-green-600" />
-                  <p className="text-base font-semibold text-muted-foreground">
+                  <p className="text-sm font-semibold text-muted-foreground">
                     Oferta exclusiva disponível
                   </p>
                 </span>
               ) : (
                 <span className="flex flex-col gap-1 items-center justify-center">
                   <XCircle className="w-8 h-8 text-red-600" />
-                  <p className="text-base font-semibold text-muted-foreground">
+                  <p className="text-sm font-semibold text-muted-foreground">
                     Oferta exclusiva indisponível
                   </p>
                 </span>
@@ -166,7 +166,7 @@ export function SearchForm() {
               transition={{ duration: 0.3, ease: "easeOut" }}
             >
               <SearchIcon className="w-8 h-8 text-muted-foreground" />
-              <p className="text-base font-semibold text-muted-foreground">
+              <p className="text-sm font-semibold text-muted-foreground">
                 Verifique se existe oferta exclusiva
               </p>
             </motion.div>
